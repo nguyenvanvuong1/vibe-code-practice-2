@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Survey Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Customer Experience Survey</h1>
+      <p>AI Vibe Coding Demo · Vanilla JS + localStorage</p>
+    </header>
+    <nav>
+      <button data-view="survey">Survey</button
+      ><button data-view="dashboard">Dashboard</button>
+    </nav>
+    <main>
+      <section id="surveyView" class="panel">
+        <h2>Khảo sát trải nghiệm</h2>
+        <form id="surveyForm">
+          <label
+            >Tên (không bắt buộc)<input name="name" maxlength="60"
+          /></label>
+          <label
+            >Nhóm tuổi<select name="ageGroup" required>
+              <option value="">Chọn</option>
+              <option>Dưới 20</option>
+              <option>20-29</option>
+              <option>30-39</option>
+              <option>40+</option>
+            </select></label
+          >
+          <label
+            >Kênh biết đến<select name="channel" required>
+              <option value="">Chọn</option>
+              <option>Facebook</option>
+              <option>TikTok</option>
+              <option>Google</option>
+              <option>Bạn bè</option>
+              <option>Khác</option>
+            </select></label
+          >
+          <label
+            >Rating tổng thể (1-5)<input
+              name="rating"
+              type="number"
+              min="1"
+              max="5"
+              required
+          /></label>
+          <label
+            >NPS – khả năng giới thiệu (0-10)<input
+              name="nps"
+              type="number"
+              min="0"
+              max="10"
+              required
+          /></label>
+          <label
+            >Hài lòng sản phẩm (1-5)<input
+              name="productScore"
+              type="number"
+              min="1"
+              max="5"
+              required
+          /></label>
+          <label
+            >Hài lòng dịch vụ (1-5)<input
+              name="serviceScore"
+              type="number"
+              min="1"
+              max="5"
+              required
+          /></label>
+          <label
+            >Hài lòng về giá (1-5)<input
+              name="priceScore"
+              type="number"
+              min="1"
+              max="5"
+              required
+          /></label>
+          <label
+            >Ý kiến<textarea name="comment" maxlength="500"></textarea>
+          </label>
+          <button type="submit">Gửi phản hồi</button>
+          <p id="message" aria-live="polite"></p>
+        </form>
+      </section>
+      <section id="dashboardView" class="panel hidden">
+        <div class="dash-head">
+          <h2>Dashboard</h2>
+          <button id="seedBtn">Tạo dữ liệu demo</button
+          ><button id="clearBtn">Xóa dữ liệu</button>
+        </div>
+        <div id="kpis" class="kpis"></div>
+        <h3>Phân bố Rating</h3>
+        <div id="ratingChart"></div>
+        <h3>Kênh tiếp cận</h3>
+        <div id="channelChart"></div>
+        <h3>Phản hồi gần nhất</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Kênh</th>
+                <th>Rating</th>
+                <th>NPS</th>
+                <th>Ý kiến</th>
+              </tr>
+            </thead>
+            <tbody id="recentRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="js/app.js"></script>
+  </body>
+</html>
